@@ -1,6 +1,3 @@
-// data.js
-// Define aquí tus propiedades — puedes añadir o modificar objetos libremente.
-// Cada objeto puede tener: id, titulo, descripcion, direccion, habitaciones, baños, precio, imagen, smoke (bool), pets (bool)
 const propiedadesVenta = [
   {
     id: 1,
@@ -78,3 +75,4 @@ const propiedadesAlquiler = [
     pets: false
   }
 ];
+
