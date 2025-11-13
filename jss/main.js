@@ -1,5 +1,3 @@
-// main.js
-
 function crearCard(propiedad) {
   const { titulo, descripcion, direccion, habitaciones, banos, precio, imagen, smoke, pets } = propiedad;
   const smokeHtml = smoke ? `<p class="text-success"><i class="fas fa-smoking"></i> Permitido fumar</p>` : `<p class="text-danger"><i class="fas fa-smoking-ban"></i> No se permite fumar</p>`;
@@ -38,15 +36,11 @@ function renderizarPropiedadesEn(containerId, arrayProp) {
   contenedor.appendChild(fragment);
 }
 
-/**
- * Crea el HTML de una card a partir de un objeto propiedad.
- * Devuelve string con el markup (Bootstrap card).
- */
 
 function crearCard(propiedad) {
   const { titulo, descripcion, direccion, habitaciones, banos, precio, imagen, smoke, pets } = propiedad;
 
-  // iconos condicionales para smoke/pets
+
   const smokeHtml = smoke
     ? `<p class="text-success"><i class="fas fa-smoking"></i> Permitido fumar</p>`
     : `<p class="text-danger"><i class="fas fa-smoking-ban"></i> No se permite fumar</p>`;
@@ -75,11 +69,7 @@ function crearCard(propiedad) {
   `;
 }
 
-/**
- * Renders en el contenedor con id = containerId las propiedades pasadas en arrayProp.
- * Vacía primero el contenedor y lo rellena con las cards (cada 3 cols es row en Boostrap, 
- * pero dejamos que las cards estén dentro de un row que el HTML debe contener).
- */
+
 function renderizarPropiedadesEn(containerId, arrayProp) {
   const contenedor = document.getElementById(containerId);
   if (!contenedor) {
@@ -87,18 +77,17 @@ function renderizarPropiedadesEn(containerId, arrayProp) {
     return;
   }
 
-  // limpia
+
   contenedor.innerHTML = '';
 
-  // genera markup
+
   const fragment = document.createDocumentFragment();
-  // Como usamos Bootstrap grid, insertamos strings dentro de un wrapper temporal
+
   arrayProp.forEach(prop => {
-    // crear elemento temporal y asignar innerHTML de la card
+
     const temp = document.createElement('div');
     temp.innerHTML = crearCard(prop);
-    // temp puede contener múltiples nodes (col-md-4)
-    // appendarlos uno por uno
+
     while (temp.firstChild) {
       fragment.appendChild(temp.firstChild);
     }
@@ -106,9 +95,3 @@ function renderizarPropiedadesEn(containerId, arrayProp) {
 
   contenedor.appendChild(fragment);
 }
-
-// Si quieres que main.js haga el render al cargar, descomenta lo siguiente:
-// document.addEventListener('DOMContentLoaded', () => {
-//   renderizarPropiedadesEn('contenedor-venta', propiedadesVenta.slice(0, 3));
-//   renderizarPropiedadesEn('contenedor-alquiler', propiedadesAlquiler.slice(0, 3));
-// });
